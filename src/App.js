@@ -1,26 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { voteAngular, voteReact } from './actions';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
 
-export default App;
+  constructor(props) {
+    super(props)
+    this.store = this.props.store;
+  }
+
+  handleVoteAngular = ( ) => {
+    this.store.dispatch(voteAngular())
+  }
+
+  handleVoteReact = () => {
+    this.store.dispatch(voteReact());
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <button onClick={this.handleVoteAngular}>Vote angular</button>
+          <button onClick={this.handleVoteReact}>Vote React</button>
+        </header>
+
+        <div className="results">
+          <h3>Angular -> {this.store.getState().angular}</h3>
+          <h3>React -> {this.store.getState().react}</h3>
+        </div>
+      </div>
+    );
+  }
+};
