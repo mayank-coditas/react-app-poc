@@ -21,7 +21,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+		<header className="App-header">				
           <button onClick={this.handleVoteAngular}>Vote angular</button>
           <button onClick={this.handleVoteReact}>Vote React</button>
         </header>
@@ -29,6 +29,7 @@ export default class App extends Component {
         <div className="results">
           <h3>Angular -> {this.store.getState().angular}</h3>
           <h3>React -> {this.store.getState().react}</h3>
+		  <custom-card />
         </div>
       </div>
     );
