@@ -13,6 +13,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         react: state.react + 1
       })
+    case 'UPDATE_STATE':
+      return Object.assign({}, action.payload)
     default:
       return state
   }

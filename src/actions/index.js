@@ -9,3 +9,10 @@ export const voteReact = () => {
     type: 'VOTE_REACT'
   }
 }
+
+export const updateState = (payload) => {
+  return {
+    type: 'UPDATE_STATE',
+    payload
+  }
+}
